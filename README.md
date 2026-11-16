@@ -10,8 +10,6 @@ DiscPro is a website connecting independent community sellers with budget-consci
 
 Sellers: Neighborhood mom-and-pop shops, convenience stores, and local bakeries scan a product's barcode and enter the stamped expiry date. The website automatically slashes the price based on time left (e.g., 30% off with a week left, 60% off with 1 day left, etc.).
 
-Buyers: Community members view a live feed of cheap groceries nearby. They tap "Reserve" to lock an item, generating a unique claim QR code with a 45-minute timer. The buyer walks or drives directly to the shop, gets their code scanned, pays over the counter, and picks up their item. Unclaimed items go back on the live feed automatically.
-
 Potential Beneficiaries (The Benefactors)
 Small Community Businesses: Independent neighborhood merchants stop throwing away cash, recover lost revenue, and automate their stock clearance.
 
@@ -24,4 +22,3 @@ Live Feed
 Store Finder(address)
 
 SDG: SDG12-RESPONSIBLE CONSUMPTION AND PRODUCTION
-
