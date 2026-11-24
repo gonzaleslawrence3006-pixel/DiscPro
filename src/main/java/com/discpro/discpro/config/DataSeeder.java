@@ -1,5 +1,6 @@
 package com.discpro.discpro.config;
 
+//data seeder
 import com.discpro.discpro.model.Buyer;
 import com.discpro.discpro.model.Product;
 import com.discpro.discpro.model.Seller;
