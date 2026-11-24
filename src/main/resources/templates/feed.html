@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscPro - Live Discount Feed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">DiscPro</a>
+        <div class="navbar-nav ms-auto gap-2">
+            <a class="nav-link active fw-bold" href="/feed">Live Feed</a>
+            <a class="nav-link text-white" href="/stores">Store Finder</a>
+            <a class="nav-link text-white" href="/buyer/3/dashboard">Buyer Dashboard</a>
+            <a class="nav-link text-white" href="/seller/1/dashboard">Seller Portal</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Live Near-Expiry Feed</h2>
+            <p class="text-muted mb-0">Sorted by soonest expiration date. Only factory-sealed barcoded goods.</p>
+        </div>
+        <span class="badge bg-success fs-6" th:text="${#lists.size(products)} + ' Active Deals'">0 Active Deals</span>
+    </div>
+
+    <div class="alert alert-info" th:if="${#lists.isEmpty(products)}">
+        No active discounts right now. Check back soon!
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4" th:each="product : ${products}">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-danger fs-6" th:text="${product.discountPercentageDisplay} + '% OFF'">30% OFF</span>
+                        <span class="badge bg-secondary" th:text="${product.category}">Dairy</span>
+                    </div>
+                    <h5 class="card-title fw-bold" th:text="${product.name}">Product Name</h5>
+                    <p class="text-muted small mb-1" th:text="${product.seller.storeName}">Store Name</p>
+                    <p class="text-muted small mb-3" th:text="${product.seller.address}">Address</p>
+
+                    <div class="mt-auto">
+                        <div class="mb-2">
+                            <span class="text-decoration-line-through text-muted me-2" th:text="'₱' + ${product.originalPrice}">₱0.00</span>
+                            <span class="fs-4 fw-bold text-success" th:text="'₱' + ${product.discountedPrice}">₱0.00</span>
+                        </div>
+                        <div class="d-flex justify-content-between small text-muted mb-3">
+                            <span>Expires: <strong th:text="${product.expiryDate}">Date</strong></span>
+                            <span>Qty: <strong th:text="${product.quantity}">0</strong></span>
+                        </div>
+                        <form th:action="@{/buyer/3/save/{id}(id=${product.id})}" method="post">
+                            <button type="submit" class="btn btn-outline-success w-100 btn-sm">Save to Buyer List</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

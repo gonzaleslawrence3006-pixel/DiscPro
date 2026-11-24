@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscPro - Buyer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">DiscPro</a>
+        <div class="navbar-nav ms-auto gap-2">
+            <a class="nav-link text-white" href="/feed">Live Feed</a>
+            <a class="nav-link text-white" href="/stores">Store Finder</a>
+            <a class="nav-link active fw-bold" href="/buyer/3/dashboard">Buyer Dashboard</a>
+            <a class="nav-link text-white" href="/seller/1/dashboard">Seller Portal</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-5">
+    <div class="mb-4">
+        <h2 class="fw-bold mb-0" th:text="'Welcome, ' + ${buyer.name}">Welcome, Buyer</h2>
+        <p class="text-muted" th:text="'Neighborhood: ' + ${buyer.neighborhood}">Neighborhood</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Saved Items -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Your Saved Deals</h5>
+                    <p class="text-muted small" th:if="${#lists.isEmpty(buyer.savedProducts)}">
+                        You haven't saved any items yet. Click "Save" on any deal to track it here.
+                    </p>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item px-0 d-flex justify-content-between align-items-center"
+                             th:each="saved : ${buyer.savedProducts}">
+                            <div>
+                                <div class="fw-bold" th:text="${saved.name}">Item</div>
+                                <small class="text-muted" th:text="${saved.seller.storeName} + ' • ₱' + ${saved.discountedPrice}">Store</small>
+                            </div>
+                            <form th:action="@{/buyer/{bid}/save/{pid}(bid=${buyer.id}, pid=${saved.id})}" method="post">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nearby Deals -->
+        <div class="col-lg-7">
+            <h5 class="fw-bold mb-3">Available Neighborhood Deals</h5>
+            <div class="row g-3">
+                <div class="col-md-6" th:each="deal : ${deals}">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2" th:text="${deal.discountPercentageDisplay} + '% OFF'">50% OFF</span>
+                            <h6 class="fw-bold" th:text="${deal.name}">Item</h6>
+                            <p class="text-muted small mb-2" th:text="${deal.seller.storeName}">Store</p>
+                            <div class="mb-2">
+                                <span class="text-decoration-line-through text-muted small me-1" th:text="'₱' + ${deal.originalPrice}">₱0</span>
+                                <strong class="text-success fs-5" th:text="'₱' + ${deal.discountedPrice}">₱0</strong>
+                            </div>
+                            <form th:action="@{/buyer/{bid}/save/{pid}(bid=${buyer.id}, pid=${deal.id})}" method="post">
+                                <button type="submit" class="btn btn-sm btn-success w-100">Save / Toggle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
