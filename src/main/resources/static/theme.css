@@ -1,0 +1,85 @@
+:root {
+    --primary-red: #dc3545;
+    --primary-dark-red: #bb2d3b;
+    --light-bg: #f8f9fa;
+}
+
+body {
+    background: var(--light-bg);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--primary-red) !important;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ffd6d6 !important;
+}
+
+/* Buttons */
+.btn-red {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+    color: white;
+}
+
+.btn-red:hover {
+    background: var(--primary-dark-red);
+    border-color: var(--primary-dark-red);
+}
+
+.btn-outline-red {
+    color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+}
+
+.btn-outline-red:hover {
+    background: var(--primary-red);
+    color: white;
+}
+
+/* Text */
+.text-red {
+    color: var(--primary-red);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Tables */
+.table {
+    vertical-align: middle;
+}
+
+/* Badges */
+.badge {
+    font-size: .8rem;
+    padding: 8px 12px;
+    border-radius: 30px;
+}
+.nav-link.active {
+    color: #ffffff !important;
+    font-weight: 700;
+    border-bottom: 3px solid white;
+}

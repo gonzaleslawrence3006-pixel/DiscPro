@@ -23,19 +23,19 @@ public class DataSeeder {
                                    ProductService productService) {
         return args -> {
             Seller cornerMart = sellerRepo.save(new Seller(
-                    "Maria Santos", "maria@cornermart.local", "pass123",
-                    "Santos Neighborhood Mart", "123 Rizal Ave, Brgy. San Isidro",
-                    14.0273, 121.5920, "STANDARD"
+                    "Trisha Dimaunahan", "trishaDimaunahan@gmail.com", "pass123",
+                    "Aeshachi Sarisari Store", "Brgy Alangilan Batangas City",
+                    13.7565, 121.0583, "STANDARD"
             ));
 
             Seller sunriseBakery = sellerRepo.save(new Seller(
-                    "Carlos Reyes", "carlos@sunrisebakery.local", "pass123",
-                    "Sunrise Artisan Bakery", "45 Quezon St, Poblacion",
-                    14.0261, 121.5935, "BAKERY"
+                    "Aldrich Miguel Villanueva", "aldrich123@gmail.com", "pass456",
+                    "Leugim Bakeshop", "Brgy Balagtasan Batangas City",
+                    13.7975, 121.0709, "BAKERY"
             ));
 
             buyerRepo.save(new Buyer(
-                    "Ana Cruz", "ana@resident.local", "pass123", "Brgy. San Isidro"
+                    "Lawrence Gonzales", "lawrence.gonzales@gmail.com", "123go", "Brgy Kumintang-ibaba"
             ));
 
             Product milk = new Product();
