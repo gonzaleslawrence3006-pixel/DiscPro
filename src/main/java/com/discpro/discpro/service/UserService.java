@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -24,6 +25,42 @@ public class UserService {
         this.buyerRepository = buyerRepository;
         this.sellerRepository = sellerRepository;
         this.productRepository = productRepository;
+    }
+
+    public Buyer authenticateBuyer(String identifier, String password) {
+        if (identifier == null || identifier.isBlank() || password == null || password.isBlank()) {
+            throw new IllegalArgumentException("User ID/Email and password are required.");
+        }
+
+        Optional<Buyer> buyerOpt;
+        String trimmed = identifier.trim();
+
+        if (trimmed.matches("\\d+")) {
+            buyerOpt = buyerRepository.findById(Long.parseLong(trimmed));
+        } else {
+            buyerOpt = buyerRepository.findAll().stream()
+                    .filter(b -> b.getEmail().equalsIgnoreCase(trimmed))
+                    .findFirst();
+        }
+
+        Buyer buyer = buyerOpt.orElseThrow(() ->
+                new IllegalArgumentException("No Buyer account found for that User ID or Email."));
+
+        if (!buyer.getPassword().equals(password)) {
+            throw new IllegalArgumentException("Incorrect password.");
+        }
+        return buyer;
+    }
+
+    @Transactional
+    public Buyer registerBuyer(String name, String email, String password, String neighborhood) {
+        boolean emailExists = buyerRepository.findAll().stream()
+                .anyMatch(b -> b.getEmail().equalsIgnoreCase(email.trim()));
+        if (emailExists) {
+            throw new IllegalArgumentException("An account with this email already exists.");
+        }
+        Buyer newBuyer = new Buyer(name.trim(), email.trim(), password, neighborhood.trim());
+        return buyerRepository.save(newBuyer);
     }
 
     public Buyer getBuyer(Long id) {

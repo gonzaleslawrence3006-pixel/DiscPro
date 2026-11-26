@@ -37,9 +37,9 @@ public class Product {
     @Min(value = 1, message = "Quantity must be at least 1")
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller_id", nullable = false)
-    private Seller seller;
+    @ManyToOne(fetch = FetchType.EAGER)
+@JoinColumn(name = "seller_id", nullable = false)
+private Seller seller;
 
     public Product() {}
 

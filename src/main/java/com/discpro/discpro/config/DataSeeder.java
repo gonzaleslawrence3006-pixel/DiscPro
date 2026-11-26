@@ -1,6 +1,5 @@
 package com.discpro.discpro.config;
 
-//data seeder
 import com.discpro.discpro.model.Buyer;
 import com.discpro.discpro.model.Product;
 import com.discpro.discpro.model.Seller;
@@ -22,6 +21,7 @@ public class DataSeeder {
                                    BuyerRepository buyerRepo,
                                    ProductService productService) {
         return args -> {
+            // ID 1 & 2: Partner Stores (Seller Portal is separate / out-of-scope for public buyers)
             Seller cornerMart = sellerRepo.save(new Seller(
                     "Trisha Dimaunahan", "trishaDimaunahan@gmail.com", "pass123",
                     "Aeshachi Sarisari Store", "Brgy Alangilan Batangas City",
@@ -34,8 +34,15 @@ public class DataSeeder {
                     13.7975, 121.0709, "BAKERY"
             ));
 
+            // ID 3, 4, 5: Sample Buyer Accounts
             buyerRepo.save(new Buyer(
-                    "Lawrence Gonzales", "lawrence.gonzales@gmail.com", "123go", "Brgy Kumintang-ibaba"
+                    "Lawrence Gonzales", "lawrence.gonzales@gmail.com", "123go", "Brgy Kumintang-Ibaba"
+            ));
+            buyerRepo.save(new Buyer(
+                    "Aldrich Villanueva", "aldrich.buyer@gmail.com", "buyer123", "Brgy Balagtas"
+            ));
+            buyerRepo.save(new Buyer(
+                    "Trisha Dimaunahan", "trisha.buyer@gmail.com", "buyer456", "Brgy Alangilan"
             ));
 
             Product milk = new Product();

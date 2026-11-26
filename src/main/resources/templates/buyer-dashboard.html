@@ -11,37 +11,22 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
     <div class="container">
-        <a class="nav-link active fw-bold"
-   href="/buyer/3/dashboard">
-    Buyer Dashboard
-        </a>
-
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+        <a class="navbar-brand fw-bold" href="/">DiscPro</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/feed">Live Feed</a>
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/feed">Live Feed</a></li>
+                <li class="nav-item"><a class="nav-link" href="/stores">Store Finder</a></li>
+                <li class="nav-item"><a class="nav-link active fw-semibold" href="/buyer/dashboard">Buyer Dashboard</a></li>
+                <li class="nav-item" th:if="${session.loggedInBuyerId != null}">
+                    <a class="nav-link fw-semibold" href="/logout">Logout</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/stores">Store Finder</a>
+                <li class="nav-item" th:if="${session.loggedInBuyerId == null}">
+                    <a class="nav-link fw-semibold" href="/login">Login</a>
                 </li>
-
-                <li class="nav-item">
-                   <a class="navbar-brand fw-bold" href="/">DiscPro</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/seller/1/dashboard">Seller Portal</a>
-                </li>
-
             </ul>
         </div>
     </div>
@@ -50,7 +35,10 @@
 <div class="container my-5">
     <div class="mb-4">
         <h2 class="fw-bold mb-0" th:text="'Welcome, ' + ${buyer.name}">Welcome, Buyer</h2>
-        <p class="text-muted" th:text="'Neighborhood: ' + ${buyer.neighborhood}">Neighborhood</p>
+        <p class="text-muted">
+            Buyer ID: <strong th:text="${buyer.id}">3</strong> •
+            <span th:text="'Neighborhood: ' + ${buyer.neighborhood}">Neighborhood</span>
+        </p>
     </div>
 
     <div class="row g-4">
@@ -68,7 +56,7 @@
                                 <div class="fw-bold" th:text="${saved.name}">Item</div>
                                 <small class="text-muted" th:text="${saved.seller.storeName} + ' • ₱' + ${saved.discountedPrice}">Store</small>
                             </div>
-                            <form th:action="@{/buyer/{bid}/save/{pid}(bid=${buyer.id}, pid=${saved.id})}" method="post">
+                            <form th:action="@{/buyer/save/{pid}(pid=${saved.id})}" method="post">
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
                             </form>
                         </div>
@@ -90,8 +78,9 @@
                                 <span class="text-decoration-line-through text-muted small me-1" th:text="'₱' + ${deal.originalPrice}">₱0</span>
                                 <strong class="text-red fs-5" th:text="'₱' + ${deal.discountedPrice}">₱0</strong>
                             </div>
-                            <form th:action="@{/buyer/{bid}/save/{pid}(bid=${buyer.id}, pid=${deal.id})}" method="post">
-                                <button type="submit" class="btn btn-sm btn-red w-100">Save / Toggle</button>
+                            <form th:action="@{/buyer/save/{pid}(pid=${deal.id})}" method="post">
+                                <button type="submit" class="btn btn-sm btn-red w-100"
+                                        th:text="${buyer.savedProducts.contains(deal)} ? 'Saved ✓ (Remove)' : 'Save / Toggle'">Save / Toggle</button>
                             </form>
                         </div>
                     </div>
