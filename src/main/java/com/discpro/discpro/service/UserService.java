@@ -2,9 +2,11 @@ package com.discpro.discpro.service;
 
 import com.discpro.discpro.model.Buyer;
 import com.discpro.discpro.model.Product;
+import com.discpro.discpro.model.SavedItem;
 import com.discpro.discpro.model.Seller;
 import com.discpro.discpro.repository.BuyerRepository;
 import com.discpro.discpro.repository.ProductRepository;
+import com.discpro.discpro.repository.SavedItemRepository;
 import com.discpro.discpro.repository.SellerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +20,16 @@ public class UserService {
     private final BuyerRepository buyerRepository;
     private final SellerRepository sellerRepository;
     private final ProductRepository productRepository;
+    private final SavedItemRepository savedItemRepository;
 
     public UserService(BuyerRepository buyerRepository,
                        SellerRepository sellerRepository,
-                       ProductRepository productRepository) {
+                       ProductRepository productRepository,
+                       SavedItemRepository savedItemRepository) {
         this.buyerRepository = buyerRepository;
         this.sellerRepository = sellerRepository;
         this.productRepository = productRepository;
+        this.savedItemRepository = savedItemRepository;
     }
 
     public Buyer authenticateBuyer(String identifier, String password) {
@@ -80,17 +85,57 @@ public class UserService {
         return sellerRepository.findByAddressContainingIgnoreCase(addressQuery);
     }
 
+    public List<SavedItem> getSavedItemsForBuyer(Long buyerId) {
+        return savedItemRepository.findByBuyerId(buyerId);
+    }
+
     @Transactional
-    public void toggleSavedProduct(Long buyerId, Long productId) {
+    public void reserveOneUnit(Long buyerId, Long productId) {
         Buyer buyer = getBuyer(buyerId);
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("Product not found"));
 
-        if (buyer.getSavedProducts().contains(product)) {
-            buyer.removeSavedProduct(product);
-        } else {
-            buyer.saveProduct(product);
+        if (product.getQuantity() <= 0) {
+            return; // Out of stock
         }
-        buyerRepository.save(buyer);
+
+        product.setQuantity(product.getQuantity() - 1);
+        productRepository.save(product);
+
+        SavedItem item = savedItemRepository.findByBuyerIdAndProductId(buyerId, productId)
+                .orElseGet(() -> new SavedItem(buyer, product, 0));
+        item.incrementQuantity();
+        savedItemRepository.save(item);
+    }
+
+    @Transactional
+    public void decreaseOneUnit(Long buyerId, Long productId) {
+        Optional<SavedItem> optItem = savedItemRepository.findByBuyerIdAndProductId(buyerId, productId);
+        if (optItem.isEmpty()) return;
+
+        SavedItem item = optItem.get();
+        Product product = item.getProduct();
+        product.setQuantity(product.getQuantity() + 1);
+        productRepository.save(product);
+
+        if (item.getReservedQuantity() <= 1) {
+            savedItemRepository.delete(item);
+        } else {
+            item.decrementQuantity();
+            savedItemRepository.save(item);
+        }
+    }
+
+    @Transactional
+    public void removeSavedItemAll(Long buyerId, Long productId) {
+        Optional<SavedItem> optItem = savedItemRepository.findByBuyerIdAndProductId(buyerId, productId);
+        if (optItem.isEmpty()) return;
+
+        SavedItem item = optItem.get();
+        Product product = item.getProduct();
+        product.setQuantity(product.getQuantity() + item.getReservedQuantity());
+        productRepository.save(product);
+
+        savedItemRepository.delete(item);
     }
 }

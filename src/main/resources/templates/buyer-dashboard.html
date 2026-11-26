@@ -17,10 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/feed">Live Feed</a></li>
                 <li class="nav-item"><a class="nav-link" href="/stores">Store Finder</a></li>
-                <li class="nav-item"><a class="nav-link active fw-semibold" href="/buyer/dashboard">Buyer Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="/buyer/dashboard">Buyer Dashboard</a></li>
                 <li class="nav-item" th:if="${session.loggedInBuyerId != null}">
                     <a class="nav-link fw-semibold" href="/logout">Logout</a>
                 </li>
@@ -42,46 +41,70 @@
     </div>
 
     <div class="row g-4">
+        <!-- Left Column: Saved Deals with - / + Controls -->
         <div class="col-lg-5">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="fw-bold mb-3">Your Saved Deals</h5>
-                    <p class="text-muted small" th:if="${#lists.isEmpty(buyer.savedProducts)}">
-                        You haven't saved any items yet. Click "Save" on any deal to track it here.
+                    <p class="text-muted small" th:if="${#lists.isEmpty(savedItems)}">
+                        You haven't reserved any items yet. Click "Reserve (+1)" on any deal to track it here.
                     </p>
                     <div class="list-group list-group-flush">
-                        <div class="list-group-item px-0 d-flex justify-content-between align-items-center"
-                             th:each="saved : ${buyer.savedProducts}">
-                            <div>
-                                <div class="fw-bold" th:text="${saved.name}">Item</div>
-                                <small class="text-muted" th:text="${saved.seller.storeName} + ' • ₱' + ${saved.discountedPrice}">Store</small>
+                        <div class="list-group-item px-0 py-3" th:each="item : ${savedItems}">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <div class="fw-bold" th:text="${item.product.name}">Item</div>
+                                    <small class="text-muted"
+                                           th:text="${item.product.seller.storeName} + ' • ₱' + ${item.product.discountedPrice} + ' each'">Store</small>
+                                </div>
+                                <strong class="text-red" th:text="'₱' + ${item.subtotal}">₱0.00</strong>
                             </div>
-                            <form th:action="@{/buyer/save/{pid}(pid=${saved.id})}" method="post">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
-                            </form>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-2">
+                                    <form th:action="@{/buyer/decrease/{pid}(pid=${item.product.id})}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary fw-bold px-2">-</button>
+                                    </form>
+                                    <span class="fw-bold px-2" th:text="${item.reservedQuantity}">1</span>
+                                    <form th:action="@{/buyer/save/{pid}(pid=${item.product.id})}" method="post">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary fw-bold px-2"
+                                                th:disabled="${item.product.quantity <= 0}">+</button>
+                                    </form>
+                                    <small class="text-muted ms-1" th:text="'(' + ${item.product.quantity} + ' left)'">(0 left)</small>
+                                </div>
+
+                                <form th:action="@{/buyer/remove/{pid}(pid=${item.product.id})}" method="post">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Right Column: Available Neighborhood Deals -->
         <div class="col-lg-7">
             <h5 class="fw-bold mb-3">Available Neighborhood Deals</h5>
             <div class="row g-3">
                 <div class="col-md-6" th:each="deal : ${deals}">
                     <div class="card h-100 shadow-sm border-0">
-                        <div class="card-body">
-                            <span class="badge bg-danger mb-2" th:text="${deal.discountPercentageDisplay} + '% OFF'">50% OFF</span>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-danger" th:text="${deal.discountPercentageDisplay} + '% OFF'">50% OFF</span>
+                                <small class="text-muted">Stock: <strong th:text="${deal.quantity}">8</strong></small>
+                            </div>
                             <h6 class="fw-bold" th:text="${deal.name}">Item</h6>
                             <p class="text-muted small mb-2" th:text="${deal.seller.storeName}">Store</p>
-                            <div class="mb-2">
-                                <span class="text-decoration-line-through text-muted small me-1" th:text="'₱' + ${deal.originalPrice}">₱0</span>
-                                <strong class="text-red fs-5" th:text="'₱' + ${deal.discountedPrice}">₱0</strong>
+                            <div class="mt-auto">
+                                <div class="mb-2">
+                                    <span class="text-decoration-line-through text-muted small me-1" th:text="'₱' + ${deal.originalPrice}">₱0</span>
+                                    <strong class="text-red fs-5" th:text="'₱' + ${deal.discountedPrice}">₱0</strong>
+                                </div>
+                                <form th:action="@{/buyer/save/{pid}(pid=${deal.id})}" method="post">
+                                    <button type="submit" class="btn btn-sm btn-red w-100">Reserve (+1)</button>
+                                </form>
                             </div>
-                            <form th:action="@{/buyer/save/{pid}(pid=${deal.id})}" method="post">
-                                <button type="submit" class="btn btn-sm btn-red w-100"
-                                        th:text="${buyer.savedProducts.contains(deal)} ? 'Saved ✓ (Remove)' : 'Save / Toggle'">Save / Toggle</button>
-                            </form>
                         </div>
                     </div>
                 </div>

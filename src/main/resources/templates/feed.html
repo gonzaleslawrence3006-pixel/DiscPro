@@ -17,7 +17,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/feed">Live Feed</a></li>
                 <li class="nav-item"><a class="nav-link" href="/stores">Store Finder</a></li>
                 <li class="nav-item"><a class="nav-link" href="/buyer/dashboard">Buyer Dashboard</a></li>
@@ -38,7 +37,7 @@
             <h2 class="fw-bold mb-1">Live Near-Expiry Feed</h2>
             <p class="text-muted mb-0">Sorted by soonest expiration date. Only factory-sealed barcoded goods.</p>
         </div>
-        <span class="badge bg-red fs-6" th:text="${#lists.size(products)} + ' Active Deals'">0 Active Deals</span>
+        <span class="badge bg-success fs-6" th:text="${#lists.size(products)} + ' Active Deals'">0 Active Deals</span>
     </div>
 
     <div class="alert alert-info" th:if="${#lists.isEmpty(products)}">
@@ -66,7 +65,7 @@
                             <span>Expires: <strong th:text="${product.expiryDate}">Date</strong></span>
                             <span>Qty: <strong th:text="${product.quantity}">0</strong></span>
                         </div>
-                        <form th:action="@{/buyer/3/save/{id}(id=${product.id})}" method="post">
+                        <form th:action="@{/buyer/save/{id}(id=${product.id})}" method="post">
                             <button type="submit" class="btn btn-outline-red w-100 btn-sm">Save to Buyer List</button>
                         </form>
                     </div>

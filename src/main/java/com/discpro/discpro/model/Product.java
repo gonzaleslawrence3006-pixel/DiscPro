@@ -34,7 +34,7 @@ public class Product {
     @FutureOrPresent(message = "Cannot list already expired food")
     private LocalDate expiryDate;
 
-    @Min(value = 1, message = "Quantity must be at least 1")
+    @Min(value = 0, message = "Quantity cannot be negative")
     private int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)

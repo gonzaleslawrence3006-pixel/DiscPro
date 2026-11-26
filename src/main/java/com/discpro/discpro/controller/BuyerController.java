@@ -26,19 +26,44 @@ public class BuyerController {
             return "redirect:/login";
         }
         model.addAttribute("buyer", userService.getBuyer(buyerId));
+        model.addAttribute("savedItems", userService.getSavedItemsForBuyer(buyerId));
         model.addAttribute("deals", productService.getActiveLiveFeed());
         return "buyer-dashboard";
     }
 
     @PostMapping("/save/{productId}")
-    public String toggleSaveItem(@PathVariable Long productId,
-                                 HttpSession session,
-                                 @RequestHeader(value = "Referer", required = false) String referer) {
+    public String reserveOne(@PathVariable Long productId,
+                             HttpSession session,
+                             @RequestHeader(value = "Referer", required = false) String referer) {
         Long buyerId = (Long) session.getAttribute("loggedInBuyerId");
         if (buyerId == null) {
             return "redirect:/login";
         }
-        userService.toggleSavedProduct(buyerId, productId);
+        userService.reserveOneUnit(buyerId, productId);
+        return "redirect:" + (referer != null ? referer : "/buyer/dashboard");
+    }
+
+    @PostMapping("/decrease/{productId}")
+    public String decreaseOne(@PathVariable Long productId,
+                              HttpSession session,
+                              @RequestHeader(value = "Referer", required = false) String referer) {
+        Long buyerId = (Long) session.getAttribute("loggedInBuyerId");
+        if (buyerId == null) {
+            return "redirect:/login";
+        }
+        userService.decreaseOneUnit(buyerId, productId);
+        return "redirect:" + (referer != null ? referer : "/buyer/dashboard");
+    }
+
+    @PostMapping("/remove/{productId}")
+    public String removeAll(@PathVariable Long productId,
+                            HttpSession session,
+                            @RequestHeader(value = "Referer", required = false) String referer) {
+        Long buyerId = (Long) session.getAttribute("loggedInBuyerId");
+        if (buyerId == null) {
+            return "redirect:/login";
+        }
+        userService.removeSavedItemAll(buyerId, productId);
         return "redirect:" + (referer != null ? referer : "/buyer/dashboard");
     }
 }
