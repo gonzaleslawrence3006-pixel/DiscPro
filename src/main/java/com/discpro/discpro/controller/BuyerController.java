@@ -1,11 +1,15 @@
 package com.discpro.discpro.controller;
 
+import com.discpro.discpro.model.SavedItem;
 import com.discpro.discpro.service.ProductService;
 import com.discpro.discpro.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/buyer")
@@ -25,8 +29,14 @@ public class BuyerController {
         if (buyerId == null) {
             return "redirect:/login";
         }
+        List<SavedItem> savedItems = userService.getSavedItemsForBuyer(buyerId);
+        BigDecimal grandTotal = savedItems.stream()
+                .map(SavedItem::getSubtotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
         model.addAttribute("buyer", userService.getBuyer(buyerId));
-        model.addAttribute("savedItems", userService.getSavedItemsForBuyer(buyerId));
+        model.addAttribute("savedItems", savedItems);
+        model.addAttribute("grandTotal", grandTotal);
         model.addAttribute("deals", productService.getActiveLiveFeed());
         return "buyer-dashboard";
     }
