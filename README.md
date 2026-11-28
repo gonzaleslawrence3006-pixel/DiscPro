@@ -162,8 +162,6 @@ Steps
 
 ## Project Contributors
 
-## Project Contributors
-
 **SCRAMMERS – Group 6**  
 Section: IT-2114  
 Course: OOP 101 – Object-Oriented Programming  
