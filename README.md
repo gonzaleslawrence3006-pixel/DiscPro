@@ -161,14 +161,17 @@ Steps
 
 ## Project Contributors
 
-SCRAMMERS – Group 6
-Section: IT-2114
-Course: OOP 101 – Object-Oriented Programming
+## Project Contributors
+
+**SCRAMMERS – Group 6**  
+Section: IT-2114  
+Course: OOP 101 – Object-Oriented Programming  
 Institution: Batangas State University – Alangilan Campus
 
-| Contributor | GitHub Username |
-| Trisha Mhay B. Dimaunahan | "@aeshachi" (https://github.com/aeshachi) |
-| Lawrence Gonzales | "@Gonzaleslawrence3006-pixel" (https://github.com/Gonzaleslawrence3006-pixel) |
-| Aldrich Miguel Villanueva | "@Aldrichmiguelvillanueva61-wq" (https://github.com/Aldrichmiguelvillanueva61-wq) |
+| Contributor | GitHub Username | GitHub Profile |
+|---|---|---|
+| Trisha Mhay B. Dimaunahan | @aeshachi | [GitHub](https://github.com/aeshachi) |
+| Lawrence Gonzales | @Gonzaleslawrence3006-pixel | [GitHub](https://github.com/Gonzaleslawrence3006-pixel) |
+| Aldrich Miguel Villanueva | @Aldrichmiguelvillanueva61-wq | [GitHub](https://github.com/Aldrichmiguelvillanueva61-wq) |
 
 ---
