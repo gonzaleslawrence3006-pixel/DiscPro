@@ -139,21 +139,28 @@ Steps
 ## Website's Interface
 
 ### Homepage and Live Feed
-![Homepage and Live Feed](<img width="1918" height="912" alt="933266359_1579392904034591_236803222899295884_n" src="https://github.com/user-attachments/assets/c10a39f5-060c-46fd-9a10-279435f51151" />) (<img width="1919" height="911" alt="923664785_932110813226873_514258271307227891_n (1)" src="https://github.com/user-attachments/assets/7d15262d-f1cf-449d-af8d-514e6dd8e006" />)
+![Homepage](<img width="1918" height="912" alt="933266359_1579392904034591_236803222899295884_n" src="https://github.com/user-attachments/assets/14c1b14c-e8ec-44bc-bce9-8129da8134f0" />
+)
+![Live Feed](<img width="1919" height="911" alt="923664785_932110813226873_514258271307227891_n" src="https://github.com/user-attachments/assets/a7ef7a0c-54f7-4a65-bfab-12a7aefc1bf9" />)
 
 ### Buyer Dashboard
-![Buyer Dashboard](<img width="1919" height="910" alt="931970741_977322015173200_4113091353105351923_n" src="https://github.com/user-attachments/assets/b7a2738e-8426-4bf6-87d3-9e16c20b8aa8" />
+![Buyer Dashboard](<img width="1919" height="910" alt="925324627_2416166199140427_9089667383591810446_n" src="https://github.com/user-attachments/assets/0aeaae27-c123-45c2-b86c-04cd56244599" />
 )
 
 ### Store Finder
-![Store Finder](<img width="1919" height="910" alt="931970741_977322015173200_4113091353105351923_n" src="https://github.com/user-attachments/assets/b7a2738e-8426-4bf6-87d3-9e16c20b8aa8" />
+![Store Finder](<img width="1919" height="910" alt="931970741_977322015173200_4113091353105351923_n" src="https://github.com/user-attachments/assets/0c99ffeb-58dd-488d-9e4e-a948d019f9c6" />
 )
 
 ### Seller Dashboard
-![Seller Dashboard](<img width="1919" height="909" alt="924562991_1520496563346380_5577890888436795184_n" src="https://github.com/user-attachments/assets/670bcf20-8a16-4a79-b510-e70871554f4d" />) (<img width="1919" height="912" alt="933146840_1804857334120206_1007122707663957749_n" src="https://github.com/user-attachments/assets/6a57617d-ce05-408f-aa28-d9946414edb1" />) (<img width="1919" height="907" alt="932183544_2604557006677516_3357150537107677279_n" src="https://github.com/user-attachments/assets/03849855-3114-459d-889e-97630a7bf3f9" />)
+![Seller Dashboard](<img width="1919" height="909" alt="924562991_1520496563346380_5577890888436795184_n" src="https://github.com/user-attachments/assets/dd68e777-cfd7-4322-8e71-ddf168122881" />
+)
+![Seller Dashboard](<img width="1919" height="912" alt="933146840_1804857334120206_1007122707663957749_n" src="https://github.com/user-attachments/assets/e967c098-89cf-47bd-b57e-f0717008e0f0" />
+)
+![Seller Dashboard](<img width="1919" height="907" alt="932183544_2604557006677516_3357150537107677279_n" src="https://github.com/user-attachments/assets/b87b6e85-20c6-49f5-82b0-320ca004ef38" />
+)
 
 ### Discounted Product Details, Reservation and Pickup Total
-![Discounted Product Details Reservation and Pickup Total](<img width="1919" height="916" alt="934102330_30653881357544881_6037148653623570611_n" src="https://github.com/user-attachments/assets/c592a663-8e0a-4fa9-a0f2-7797879aa1c4" />
+![Discounted Product Details Reservation and Pickup Total](<img width="1919" height="916" alt="934102330_30653881357544881_6037148653623570611_n" src="https://github.com/user-attachments/assets/6b6e93db-8742-4da2-961e-9151d38d5d51" />
 )
 
 ---
