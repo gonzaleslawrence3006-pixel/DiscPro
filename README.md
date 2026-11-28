@@ -63,7 +63,9 @@ Specific Objectives
 
 |Target Users| How They Will Used the System|
 |---|---|
-|Small Community Businesses|- Minimize financial losses from unsold inventory. - Recover lost revenue from products nearing expiration. - Automate the clearance of near-expiry stock.|
+|Small Community Businesses|- Minimize financial losses from unsold inventory. <br>
+- Recover lost revenue from products nearing expiration. <br>
+- Automate the clearance of near-expiry stock.|
 |Local Residents and Families|- Purchase factory-sealed products at discounted prices. - Find more affordable grocery options. - Track nearby stores and available discounted products.|
 
 ---
