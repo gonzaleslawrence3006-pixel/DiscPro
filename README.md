@@ -90,6 +90,7 @@ Specific Objectives
 
 ## Members and Roles
 | **Team Member** | **Role** |
+|---|---|
 | Trisha Mhay B. Dimaunahan | Documentation |
 | Lawrence Gonzales | Lead Programmer |
 | Aldrich Miguel Villanueva | Project Leader / System and Design Lead |
