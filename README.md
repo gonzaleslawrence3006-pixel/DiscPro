@@ -61,14 +61,10 @@ Specific Objectives
 
 ## Target Users
 
-|Target Users| How They Will Used the System|
+| Target Users | How They Will Use the System |
 |---|---|
-|Small Community Businesses|- Minimize financial losses from unsold inventory.
-| |- Recover lost revenue from products nearing expiration.
-| |- Automate the clearance of near-expiry stock.|
-|Local Residents and Families|- Purchase factory-sealed products at discounted prices.
-| |- Find more affordable grocery options.
-| |- Track nearby stores and available discounted products.|
+| Small Community Businesses | - Minimize financial losses from unsold inventory.<br>- Recover lost revenue from products nearing expiration.<br>- Automate the clearance of near-expiry stock. |
+| Local Residents and Families | - Purchase factory-sealed products at discounted prices.<br>- Find more affordable grocery options.<br>- Track nearby stores and available discounted products. |
 
 ---
 
@@ -93,10 +89,10 @@ Specific Objectives
 ---
 
 ## Members and Roles
-|Team Member| Role|
-|Trisha Mhay B. Dimaunahan| Documentation|
-|Lawrence Gonzales| Lead Programmer|
-|Aldrich Miguel Villanueva| Project Leader / System and Design Lead|
+| **Team Member** | **Role** |
+| Trisha Mhay B. Dimaunahan | Documentation |
+| Lawrence Gonzales | Lead Programmer |
+| Aldrich Miguel Villanueva | Project Leader / System and Design Lead |
 
 ---
 
@@ -170,9 +166,9 @@ Section: IT-2114
 Course: OOP 101 – Object-Oriented Programming
 Institution: Batangas State University – Alangilan Campus
 
-Contributor| GitHub Username
-Trisha Mhay B. Dimaunahan| "@aeshachi" (https://github.com/aeshachi)
-Lawrence Gonzales| "@Gonzaleslawrence3006-pixel" (https://github.com/Gonzaleslawrence3006-pixel)
-Aldrich Miguel Villanueva| "@Aldrichmiguelvillanueva61-wq" (https://github.com/Aldrichmiguelvillanueva61-wq)
+| Contributor | GitHub Username |
+| Trisha Mhay B. Dimaunahan | "@aeshachi" (https://github.com/aeshachi) |
+| Lawrence Gonzales | "@Gonzaleslawrence3006-pixel" (https://github.com/Gonzaleslawrence3006-pixel) |
+| Aldrich Miguel Villanueva | "@Aldrichmiguelvillanueva61-wq" (https://github.com/Aldrichmiguelvillanueva61-wq) |
 
 ---
