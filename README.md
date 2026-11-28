@@ -92,6 +92,14 @@ Specific Objectives
 
 ---
 
+## Members and Roles
+|Team Member| Role|
+|Trisha Mhay B. Dimaunahan| Documentation|
+|Lawrence Gonzales| Lead Programmer|
+|Aldrich Miguel Villanueva| Project Leader / System and Design Lead|
+
+---
+
 ## Tech Stack
 
 - **Backend:** Java, Spring Boot (Web MVC, Thymeleaf, Data JPA, Validation)
@@ -108,5 +116,63 @@ Specific Objectives
 | **Encapsulation** | Private fields with validated setters in `Product` |
 | **Inheritance** | `Buyer` and `Seller` extend `User` (`JOINED` strategy) |
 | **Polymorphism** | `StandardDiscount` and `BakeryDiscount` override `calculateDiscount()` |
+
+---
+
+## How to Run the Program
+
+Prerequisites
+
+- Java Development Kit (JDK)
+- Git
+- Visual Studio Code or another Java-compatible IDE
+- Project dependencies and database configuration
+
+Steps
+
+1. Clone or download the DiscPro repository.
+2. Open the project folder in Visual Studio Code or your preferred IDE.
+3. Make sure Java and the required project dependencies are installed.
+4. Configure the application according to the project's setup requirements.
+5. Run the Spring Boot application through the IDE or its configured build tool.
+6. Open the application in your browser using the local address displayed in the console.
+
+---
+
+## Website's Interface
+
+
+
+---
+
+## Limitations
+
+- **Limited Partner Stores** — Currently limited to two partner stores: Aeshachi Sarisari Store and Leugim Bakeshop. Other stores cannot register or join through the system.
+- **Fixed Discounts** — Discount rates are based on predefined shelf-life rules through StandardDiscount and BakeryDiscount instead of being customized by individual stores.
+- **Barcode-Required Products** — Only barcoded, factory-sealed retail products are supported. Unlabeled products, fresh produce, and cooked meals are excluded to maintain food safety and traceability.
+
+---
+
+## Future Improvements
+
+- Allow more local stores to register and join the platform.
+- Provide customizable discount settings for participating sellers.
+- Expand product support while maintaining product safety and traceability.
+- Improve the user interface and accessibility.
+- Add more inventory management and reporting tools for participating stores.
+
+---
+
+## Project Contributors
+
+SCRAMMERS – Group 6
+Section: IT-2114
+Course: OOP 101 – Object-Oriented Programming
+Institution: Batangas State University – Alangilan Campus
+
+Contributor| GitHub Username
+Trisha Mhay B. Dimaunahan| "@aeshachi" (https://github.com/aeshachi)
+Lawrence Gonzales| "@Gonzaleslawrence3006-pixel" (https://github.com/Gonzaleslawrence3006-pixel)
+Aldrich Miguel Villanueva| "@Aldrichmiguelvillanueva61-wq" (https://github.com/Aldrichmiguelvillanueva61-wq)
 
 ---
