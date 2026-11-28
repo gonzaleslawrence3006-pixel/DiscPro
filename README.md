@@ -25,12 +25,70 @@
 
 ---
 
+## Project Description
+
+DiscPro is a Java-based web application designed to connect local stores with consumers looking for discounted near-expiry products. The system allows participating sellers to list barcoded products along with their expiration dates, while discounts are automatically calculated based on the products' remaining shelf life.
+
+The platform provides a centralized place where consumers can discover nearby discounted products, check participating stores, and reserve available items for store pickup. DiscPro aims to help local businesses reduce inventory losses while giving consumers access to more affordable products.
+
+---
+
+## Problem
+
+Local stores, convenience shops, and bakeries often experience losses when packaged food products remain unsold and reach their expiration dates. These products may have to be discarded even when they could still have been sold before expiring.
+
+Meanwhile, consumers looking for affordable groceries may not know which nearby stores offer discounted near-expiry products. Discount information is often scattered across different social media platforms, making it difficult to find and track available deals.
+
+DiscPro addresses these problems by providing a centralized platform for near-expiry discounts, helping businesses manage unsold inventory and making discounted products easier for consumers to discover.
+
+---
+
+## Project Objectives
+
+General Objectives
+
+To develop a Java-based application that connects local sellers and consumers by providing an automated discounting system for near-expiry pre-packaged products.
+
+Specific Objectives
+
+- Allow sellers to register and list near-expiry products using barcode and expiration date information.
+- Automatically calculate and apply discounts based on a product's remaining shelf life.
+- Provide consumers with a centralized platform for finding discounted products from nearby stores.
+- Help local businesses reduce losses from unsold inventory.
+- Promote food waste reduction by encouraging the sale of near-expiry products.
+
+---
+
+## Target Users
+
+|Target Users| How They Will Used the System|
+|---|---|
+|Small Community Businesses|- Minimize financial losses from unsold inventory.
+Recover lost revenue from products nearing expiration.
+Automate the clearance of near-expiry stock.|
+|Local Residents and Families| Purchase factory-sealed products at discounted prices.
+Find more affordable grocery options.
+Track nearby stores and available discounted products.|
+
+---
+
 ## Features
 
-- **Buyer Auth & Dashboard** — Session-based login (via User ID or Email), registration, and saved deals tracking
+- **Buyer Authentication & Dashboard** — Session-based login (via User ID or Email), registration, and saved deals tracking
 - **Live Feed** — Real-time stream of active discounted items
 - **Store Finder** — Location lookup for participating neighborhood stores
 - **Seller Dashboard** — Barcode scanning, expiry entry, and inventory management
+
+---
+
+## Technologies Used
+
+- **Java** — Primary programming language.
+- **Spring Boot** — Framework for developing the web application.
+- **HTML and CSS** — Frontend structure and styling.
+- **Java Collections (List)** — Handles collections of product and application data.
+- **Java Streams** — Used for filtering and sorting active products.
+- **JPA Repositories** — Used for database-related data handling.
 
 ---
 
